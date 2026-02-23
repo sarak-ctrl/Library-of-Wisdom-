@@ -77,11 +77,21 @@
         <label for="entry-label">Label / Category</label>
         <input type="text" id="entry-label" placeholder="e.g. Favorite, Wishlist, Completed..." />
 
-        <label for="entry-image">Cover Image</label>
-        <input type="file" id="entry-image" accept="image/*" />
-        <div class="img-preview-wrap" id="img-preview-wrap" style="display:none">
-          <img id="img-preview" src="" alt="Preview" />
-        </div>
+<label>Cover Image</label>
+<div class="image-input-tabs">
+  <button type="button" class="img-tab active" data-tab="upload">Upload File</button>
+  <button type="button" class="img-tab" data-tab="paste">Paste URL</button>
+</div>
+<div id="tab-upload">
+  <input type="file" id="entry-image" accept="image/*" />
+</div>
+<div id="tab-paste" style="display:none">
+  <input type="text" id="entry-image-url" placeholder="Paste image URL here..." />
+  <button type="button" class="btn-load-url" id="load-url-btn">Load</button>
+</div>
+<div class="img-preview-wrap" id="img-preview-wrap" style="display:none">
+  <img id="img-preview" src="" alt="Preview" />
+</div>
 
         <div class="form-actions">
           <button type="submit" class="btn-primary">Save</button>
