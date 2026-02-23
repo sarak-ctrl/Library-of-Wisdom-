@@ -227,5 +227,27 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+// ── Image URL Tab Switcher ─────────────────────────
+document.querySelectorAll('.img-tab').forEach(tab => {
+  tab.addEventListener('click', function () {
+    document.querySelectorAll('.img-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+
+    const target = this.dataset.tab;
+    document.getElementById('tab-upload').style.display = target === 'upload' ? 'block' : 'none';
+    document.getElementById('tab-paste').style.display = target === 'paste' ? 'flex' : 'none';
+  });
+});
+
+// ── Load Image from URL ────────────────────────────
+document.getElementById('load-url-btn').addEventListener('click', function () {
+  const url = document.getElementById('entry-image-url').value.trim();
+  if (!url) return;
+
+  currentImageBase64 = url;
+  document.getElementById('img-preview').src = url;
+  document.getElementById('img-preview-wrap').style.display = 'block';
+});
+
 // ── Init ───────────────────────────────────────────
 renderAll();
