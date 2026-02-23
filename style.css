@@ -105,7 +105,6 @@ main {
   justify-content: space-between;
   margin-bottom: 32px;
   padding-bottom: 16px;
-  border-bottom: 3px solid var(--black);
 }
 
 .section-header h2 {
