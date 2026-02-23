@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library of Wisdom</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
 
+  <header>
+    <h1>Library of Wisdom</h1>
+    <nav class="tabs">
+      <button class="tab active" data-section="movies">Movies</button>
+      <button class="tab" data-section="books">Books</button>
+      <button class="tab" data-section="games">Games</button>
+      <button class="tab" data-section="shows">Shows</button>
+      <button class="tab" data-section="dramas">Dramas</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="movies" class="section active">
+      <div class="section-header">
+        <h2>Movies</h2>
+        <button class="add-btn" data-section="movies">+ Add Entry</button>
+      </div>
+      <div class="grid" id="movies-grid"></div>
+    </section>
+
+    <section id="books" class="section">
+      <div class="section-header">
+        <h2>Books</h2>
+        <button class="add-btn" data-section="books">+ Add Entry</button>
+      </div>
+      <div class="grid" id="books-grid"></div>
+    </section>
+
+    <section id="games" class="section">
+      <div class="section-header">
+        <h2>Games</h2>
+        <button class="add-btn" data-section="games">+ Add Entry</button>
+      </div>
+      <div class="grid" id="games-grid"></div>
+    </section>
+
+    <section id="shows" class="section">
+      <div class="section-header">
+        <h2>Shows</h2>
+        <button class="add-btn" data-section="shows">+ Add Entry</button>
+      </div>
+      <div class="grid" id="shows-grid"></div>
+    </section>
+
+    <section id="dramas" class="section">
+      <div class="section-header">
+        <h2>Dramas</h2>
+        <button class="add-btn" data-section="dramas">+ Add Entry</button>
+      </div>
+      <div class="grid" id="dramas-grid"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <h3 id="modal-title">Add Entry</h3>
+      <form id="entry-form">
+        <input type="hidden" id="entry-id" />
+        <input type="hidden" id="entry-section" />
+
+        <label for="entry-title">Title <span class="required">*</span></label>
+        <input type="text" id="entry-title" placeholder="Enter title..." required />
+
+        <label for="entry-label">Label / Category</label>
+        <input type="text" id="entry-label" placeholder="e.g. Favorite, Wishlist, Completed..." />
+
+        <label for="entry-status">Status</label>
+        <select id="entry-status">
+          <option value="completed">✓ Completed</option>
+          <option value="inprogress">▶ In Progress</option>
+          <option value="wishlist">☆ Wishlist</option>
+          <option value="dropped">✗ Dropped</option>
+        </select>
+
+        <label for="entry-image">Cover Image</label>
+        <input type="file" id="entry-image" accept="image/*" />
+        <div class="img-preview-wrap" id="img-preview-wrap" style="display:none">
+          <img id="img-preview" src="" alt="Preview" />
+        </div>
+
+        <label for="entry-notes">Notes</label>
+        <textarea id="entry-notes" placeholder="Any thoughts, ratings, notes..."></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save</button>
+          <button type="button" class="btn-danger" id="delete-btn">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
