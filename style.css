@@ -446,3 +446,65 @@ form input[type="file"] {
     max-height: 95vh;
   }
 }
+
+.image-input-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 10px;
+  border: 2px solid var(--black);
+}
+
+.img-tab {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: var(--white);
+  color: var(--black);
+  border: none;
+  border-right: 2px solid var(--black);
+  padding: 8px 16px;
+  cursor: pointer;
+  flex: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.img-tab:last-child {
+  border-right: none;
+}
+
+.img-tab.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+#tab-paste {
+  display: flex;
+  gap: 0;
+}
+
+#tab-paste input {
+  flex: 1;
+  border-right: none !important;
+}
+
+.btn-load-url {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--black);
+  color: var(--white);
+  border: 2px solid var(--black);
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-load-url:hover {
+  background: var(--white);
+  color: var(--black);
+}
