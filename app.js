@@ -48,20 +48,12 @@ function renderSection(section) {
     card.dataset.id = item.id;
     card.dataset.section = section;
 
-    const statusLabels = {
-      completed: '✓ Done',
-      inprogress: '▶ In Progress',
-      wishlist: '☆ Wishlist',
-      dropped: '✗ Dropped'
-    };
-
     const imgHTML = item.image
       ? `<img class="card-img" src="${item.image}" alt="${escapeHtml(item.title)}" />`
       : `<div class="card-img-placeholder"><span>+</span></div>`;
 
     card.innerHTML = `
       ${imgHTML}
-      ${item.status ? `<div class="status-badge">${statusLabels[item.status] || ''}</div>` : ''}
       <div class="card-info">
         <div class="card-title">${escapeHtml(item.title)}</div>
         ${item.label ? `<div class="card-label">${escapeHtml(item.label)}</div>` : ''}
@@ -101,8 +93,6 @@ function openModal(section, id = null) {
     document.getElementById('entry-id').value = id;
     document.getElementById('entry-title').value = item.title || '';
     document.getElementById('entry-label').value = item.label || '';
-    document.getElementById('entry-status').value = item.status || 'completed';
-    document.getElementById('entry-notes').value = item.notes || '';
     deleteBtn.style.display = 'block';
 
     if (item.image) {
@@ -117,8 +107,6 @@ function openModal(section, id = null) {
     document.getElementById('entry-id').value = '';
     document.getElementById('entry-title').value = '';
     document.getElementById('entry-label').value = '';
-    document.getElementById('entry-status').value = 'completed';
-    document.getElementById('entry-notes').value = '';
     deleteBtn.style.display = 'none';
   }
 
@@ -153,8 +141,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
         ...data[section][idx],
         title,
         label,
-        status,
-        notes,
         image: currentImageBase64 || data[section][idx].image || null
       };
     }
@@ -164,8 +150,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
       id: generateId(),
       title,
       label,
-      status,
-      notes,
       image: currentImageBase64 || null,
       createdAt: Date.now()
     });
