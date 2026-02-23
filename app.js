@@ -140,8 +140,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
   const section = document.getElementById('entry-section').value;
   const title = document.getElementById('entry-title').value.trim();
   const label = document.getElementById('entry-label').value.trim();
-  const status = document.getElementById('entry-status').value;
-  const notes = document.getElementById('entry-notes').value.trim();
 
   if (!title) return;
 
