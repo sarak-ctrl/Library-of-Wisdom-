@@ -77,22 +77,11 @@
         <label for="entry-label">Label / Category</label>
         <input type="text" id="entry-label" placeholder="e.g. Favorite, Wishlist, Completed..." />
 
-        <label for="entry-status">Status</label>
-        <select id="entry-status">
-          <option value="completed">✓ Completed</option>
-          <option value="inprogress">▶ In Progress</option>
-          <option value="wishlist">☆ Wishlist</option>
-          <option value="dropped">✗ Dropped</option>
-        </select>
-
         <label for="entry-image">Cover Image</label>
         <input type="file" id="entry-image" accept="image/*" />
         <div class="img-preview-wrap" id="img-preview-wrap" style="display:none">
           <img id="img-preview" src="" alt="Preview" />
         </div>
-
-        <label for="entry-notes">Notes</label>
-        <textarea id="entry-notes" placeholder="Any thoughts, ratings, notes..."></textarea>
 
         <div class="form-actions">
           <button type="submit" class="btn-primary">Save</button>
