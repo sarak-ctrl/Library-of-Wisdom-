@@ -3,8 +3,8 @@
 //  Fixed: Image compression + storage error handling
 // ===========================
 
-const SECTIONS = ['movies', 'books', 'games', 'shows', 'dramas'];
-const STORAGE_KEY = 'library_of_wisdom';
+const SECTIONS = ['movies', 'books', 'cartoons', 'shows', 'dramas'];
+const STORAGE_KEY = 'Just a List';
 
 // ── Image Compression Config ───────────────────────
 const IMG_MAX_DIMENSION = 400;   // max width or height in px
