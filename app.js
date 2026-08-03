@@ -1,22 +1,14 @@
-// ===========================
-//  Library of Wisdom - App.js
-//  Fixed: Image compression + storage error handling
-// ===========================
-
 const SECTIONS = ['movies', 'books', 'cartoons', 'shows', 'dramas'];
 const STORAGE_KEY = 'Just a List';
 
-// ── Image Compression Config ───────────────────────
-const IMG_MAX_DIMENSION = 400;   // max width or height in px
-const IMG_QUALITY       = 0.70;  // JPEG quality (0–1). Lower = smaller file.
+const IMG_MAX_DIMENSION = 400;   
+const IMG_QUALITY       = 0.70;  
 
-// ── State ──────────────────────────────────────────
 let data = loadData();
 let editingId = null;
 let editingSection = null;
 let currentImageBase64 = null;
 
-// ── Load / Save ────────────────────────────────────
 function loadData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -42,7 +34,6 @@ function saveData() {
 }
 
 function showStorageWarning() {
-  // Remove any existing warning first
   const existing = document.getElementById('storage-warning');
   if (existing) existing.remove();
 
@@ -68,12 +59,6 @@ function showStorageWarning() {
   document.body.prepend(banner);
 }
 
-// ── Image Compression ──────────────────────────────
-/**
- * Compresses a File/Blob into a Base64 JPEG string.
- * Resizes to at most IMG_MAX_DIMENSION px on the longest side.
- * Returns a Promise<string>.
- */
 function compressImage(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -114,7 +99,6 @@ function compressImage(file) {
   });
 }
 
-// ── Render ─────────────────────────────────────────
 function renderSection(section) {
   const grid = document.getElementById(`${section}-grid`);
   const items = data[section] || [];
@@ -156,7 +140,6 @@ function renderAll() {
   SECTIONS.forEach(renderSection);
 }
 
-// ── Modal ──────────────────────────────────────────
 function openModal(section, id = null) {
   const overlay    = document.getElementById('modal-overlay');
   const modalTitle = document.getElementById('modal-title');
@@ -208,7 +191,6 @@ function closeModal() {
   currentImageBase64 = null;
 }
 
-// ── Save Entry ─────────────────────────────────────
 document.getElementById('entry-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -246,9 +228,7 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
     renderSection(section);
     closeModal();
   } else {
-    // Storage failed — roll back the in-memory change so state stays consistent
     if (editingId) {
-      // Re-load from storage to restore previous state
       data = loadData();
     } else {
       data[section].pop();
@@ -256,7 +236,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
   }
 });
 
-// ── Delete Entry ───────────────────────────────────
 document.getElementById('delete-btn').addEventListener('click', function () {
   if (!editingId || !editingSection) return;
   if (!confirm('Delete this entry?')) return;
@@ -267,12 +246,10 @@ document.getElementById('delete-btn').addEventListener('click', function () {
   closeModal();
 });
 
-// ── Image Picker (with compression) ───────────────
 document.getElementById('entry-image').addEventListener('change', async function () {
   const file = this.files[0];
   if (!file) return;
 
-  // Show a loading state on the preview area
   const previewWrap = document.getElementById('img-preview-wrap');
   const preview     = document.getElementById('img-preview');
 
@@ -286,7 +263,6 @@ document.getElementById('entry-image').addEventListener('change', async function
     preview.src           = compressed;
     preview.style.opacity = '1';
 
-    // Show the compressed size as a helpful indicator
     const kb = Math.round((compressed.length * 3) / 4 / 1024);
     console.log(`Compressed image: ~${kb} KB`);
   } catch (err) {
@@ -296,7 +272,6 @@ document.getElementById('entry-image').addEventListener('change', async function
   }
 });
 
-// ── Tabs ───────────────────────────────────────────
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', function () {
     const target = this.dataset.section;
@@ -309,14 +284,12 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-// ── Add Buttons ────────────────────────────────────
 document.querySelectorAll('.add-btn').forEach(btn => {
   btn.addEventListener('click', function () {
     openModal(this.dataset.section);
   });
 });
 
-// ── Close Modal ────────────────────────────────────
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-overlay').addEventListener('click', function (e) {
   if (e.target === this) closeModal();
@@ -325,7 +298,6 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeModal();
 });
 
-// ── Helpers ────────────────────────────────────────
 function generateId() {
   return '_' + Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
 }
@@ -338,7 +310,6 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// ── Image URL Tab Switcher ─────────────────────────
 document.querySelectorAll('.img-tab').forEach(tab => {
   tab.addEventListener('click', function () {
     document.querySelectorAll('.img-tab').forEach(t => t.classList.remove('active'));
@@ -350,7 +321,6 @@ document.querySelectorAll('.img-tab').forEach(tab => {
   });
 });
 
-// ── Load Image from URL ────────────────────────────
 document.getElementById('load-url-btn').addEventListener('click', function () {
   const url = document.getElementById('entry-image-url').value.trim();
   if (!url) return;
