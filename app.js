@@ -153,7 +153,6 @@ function openModal(section, id = null) {
   document.getElementById('img-preview').src                = '';
 
   if (id) {
-    // Edit mode
     editingId = id;
     const item = (data[section] || []).find(i => i.id === id);
     if (!item) return;
@@ -170,7 +169,6 @@ function openModal(section, id = null) {
       document.getElementById('img-preview-wrap').style.display = 'block';
     }
   } else {
-    // Add mode
     editingId                                    = null;
     modalTitle.textContent                       = 'Add Entry';
     document.getElementById('entry-id').value    = '';
@@ -201,7 +199,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
   if (!data[section]) data[section] = [];
 
   if (editingId) {
-    // Update existing
     const idx = data[section].findIndex(i => i.id === editingId);
     if (idx !== -1) {
       data[section][idx] = {
@@ -212,7 +209,6 @@ document.getElementById('entry-form').addEventListener('submit', function (e) {
       };
     }
   } else {
-    // Create new
     data[section].push({
       id:        generateId(),
       title,
