@@ -325,5 +325,4 @@ document.getElementById('load-url-btn').addEventListener('click', function () {
   document.getElementById('img-preview-wrap').style.display = 'block';
 });
 
-// ── Init ───────────────────────────────────────────
 renderAll();
