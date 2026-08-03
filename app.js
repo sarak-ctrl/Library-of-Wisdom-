@@ -71,7 +71,6 @@ function compressImage(file) {
       img.onload = function () {
         let { width: w, height: h } = img;
 
-        // Scale down if needed
         if (w > IMG_MAX_DIMENSION || h > IMG_MAX_DIMENSION) {
           if (w >= h) {
             h = Math.round((h * IMG_MAX_DIMENSION) / w);
