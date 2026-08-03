@@ -1,8 +1,3 @@
-/* ===========================
-   Just a List - Styles
-   Black & White, Bold Editorial
-=========================== */
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +22,6 @@ body {
   min-height: 100vh;
 }
 
-/* ===== HEADER ===== */
 header {
   background: var(--white);
   border-bottom: 3px solid var(--black);
@@ -46,7 +40,6 @@ header h1 {
   line-height: 1;
 }
 
-/* ===== TABS ===== */
 .tabs {
   display: flex;
   justify-content: center;
@@ -83,14 +76,12 @@ header h1 {
   color: var(--white);
 }
 
-/* ===== MAIN ===== */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 30px;
 }
 
-/* ===== SECTIONS ===== */
 .section {
   display: none;
 }
@@ -113,7 +104,6 @@ main {
   letter-spacing: 2px;
 }
 
-/* ===== ADD BUTTON ===== */
 .add-btn {
   font-family: var(--font-body);
   font-weight: 700;
@@ -133,7 +123,6 @@ main {
   color: var(--black);
 }
 
-/* ===== GRID ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -142,7 +131,6 @@ main {
   border-top: 2px solid var(--black);
 }
 
-/* ===== CARD ===== */
 .card {
   border-right: 2px solid var(--black);
   border-bottom: 2px solid var(--black);
@@ -214,7 +202,6 @@ main {
   color: var(--white);
 }
 
-/* ===== EMPTY STATE ===== */
 .empty-state {
   grid-column: 1 / -1;
   border-right: 2px solid var(--black);
@@ -240,7 +227,6 @@ main {
   text-transform: uppercase;
 }
 
-/* ===== MODAL OVERLAY ===== */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -255,7 +241,6 @@ main {
   display: flex;
 }
 
-/* ===== MODAL ===== */
 .modal {
   background: var(--white);
   border: 3px solid var(--black);
@@ -298,7 +283,6 @@ main {
   border-bottom: 2px solid var(--black);
 }
 
-/* ===== FORM ===== */
 form label {
   display: block;
   font-weight: 700;
@@ -368,7 +352,6 @@ form input[type="file"] {
   object-fit: contain;
 }
 
-/* ===== FORM ACTIONS ===== */
 .form-actions {
   display: flex;
   gap: 10px;
@@ -416,7 +399,6 @@ form input[type="file"] {
   color: var(--white);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   header {
     padding: 20px 16px 0;
